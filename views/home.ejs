@@ -1,0 +1,47 @@
+<%- include('header.ejs'); -%>
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+      <a class="navbar-brand" href="#">My tasks</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="linkShow">
+      </div>
+    </nav>
+  </div>
+  <script>
+    const userName = localStorage.getItem("name");
+    const isAdmin = localStorage.getItem("admin");
+    var addHtml = ""
+    if (userName) {
+      addHtml = `<div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/home">welocome to ${userName} <span class="sr-only">(current)</span></a>
+            </li>`;
+
+      
+        addHtml += `<li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                tasks
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/tasks">List of tasks</a>
+                            </div>
+            </li>
+           `;
+      
+      // 
+      addHtml += `<li class="nav-item">
+              <a class="nav-link" href="/">Logout</a>
+            </li></ul>  </div>`;
+      document.getElementById("linkShow").innerHTML = addHtml;
+    }
+    else {
+      alert("your not login");
+    }
+  </script>
+  </body>
+
+  </html>
